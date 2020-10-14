@@ -1,19 +1,16 @@
 // const { WebGL1Renderer } = require('three');
+// import { setCamera } from './camera'
 const THREE = require('three')
 let scene, camera, cloudParticles = [];
-let width = window.innerWidth;
-let height = window.innerHeight
 const smoke = require('./images/smoke.png')
-const stars = require('./images/stars.jpg')
+// const setCamera = require('./camera.js')
+let width = window.innerWidth;
+let height = window.innerHeight;
 
 const init = () => {
     scene = new THREE.Scene()
-    camera = new THREE.PerspectiveCamera(60, width / height, 1 ,1000)
-    camera.position.z = 1;
-    camera.rotation.x = 1.16;
-    camera.rotation.y = -0.12;
-    camera.rotation.z = 0.27;
-
+    console.log(setCamera.setCamera)
+    setCamera();
     let ambient = new THREE.AmbientLight(0x555555);
     scene.add(ambient);
 
@@ -35,6 +32,7 @@ const init = () => {
     scene.fog = new THREE.FogExp2(0x03544e, 0.001)
     renderer.setSize(width, height);
     renderer.setClearColor(scene.fog.color);
+    
     // document.getElementById("threejs")
     document.body.appendChild(renderer.domElement);
 
@@ -62,8 +60,16 @@ const init = () => {
             scene.add(cloud)
         }
     });
-    window.addEventListener("resize", onWindowResize, false);
     render();
+}
+
+const setCamera = () => {
+    camera = new THREE.PerspectiveCamera(60, width / height, 1 ,1000)
+    camera.position.z = 1;
+    camera.rotation.x = 1.16;
+    camera.rotation.y = -0.12;
+    camera.rotation.z = 0.27;
+    window.addEventListener("resize", onWindowResize, false);
 }
 
 function onWindowResize() {
@@ -73,6 +79,8 @@ function onWindowResize() {
     camera.updateProjectionMatrix();
     renderer.setSize(width, height);
   }
+
+
 
 const render = () => {
     cloudParticles.forEach(p => {
