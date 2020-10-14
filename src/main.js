@@ -4,7 +4,6 @@ let scene, camera, cloudParticles = [];
 const smoke = require('./images/smoke.png')
 let width = window.innerWidth;
 let height = window.innerHeight;
-
 const init = () => {
     scene = new THREE.Scene()
     console.log(setCamera.setCamera)
@@ -31,8 +30,9 @@ const init = () => {
     renderer.setSize(width, height);
     renderer.setClearColor(scene.fog.color);
     
-    // document.getElementById("threejs")
-    document.body.appendChild(renderer.domElement);
+    const div3d = document.getElementById("threejs")
+    div3d.appendChild(renderer.domElement)
+    // document.body.appendChild();
 
     let loader = new THREE.TextureLoader();
 
