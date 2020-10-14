@@ -1,9 +1,7 @@
 // const { WebGL1Renderer } = require('three');
-// import { setCamera } from './camera'
 const THREE = require('three')
 let scene, camera, cloudParticles = [];
 const smoke = require('./images/smoke.png')
-// const setCamera = require('./camera.js')
 let width = window.innerWidth;
 let height = window.innerHeight;
 
