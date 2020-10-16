@@ -1,9 +1,7 @@
 const THREE = require('three')
 let camera;
-let width = window.innerWidth;
-let height = window.innerHeight;
 
-export const setCamera = () => {
+export const setCamera = (width, height) => {
     camera = new THREE.PerspectiveCamera(60, width / height, 1 ,1000)
     camera.position.z = 1;
     camera.rotation.x = 1.16;
